@@ -62,6 +62,13 @@ src/main/java/com/devmark/cloneuber/
 │   ├── dto/            # TripRequest, TripResponse
 │   └── repository/     # TripRepository
 │
+├── rating/
+│   ├── controller/     # RatingController
+│   ├── service/        # RatingService
+│   ├── entity/         # Rating
+│   ├── dto/            # RatingRequest, RatingResponse
+│   └── repository/     # RatingRepository
+│
 └── common/
     ├── config/         # SecurityConfig
     ├── exception/
@@ -89,6 +96,12 @@ src/main/java/com/devmark/cloneuber/
 | PATCH | `/api/trips/{id}/status` | Cambiar estado del viaje | Sí |
 | GET | `/api/trips/my` | Ver mis viajes | Sí |
 
+### Calificaciones
+| Método | Endpoint | Descripción | Auth |
+|--------|----------|-------------|------|
+| POST | `/api/ratings` | Calificar un viaje completado | Sí |
+| GET | `/api/ratings/user/{userId}/average` | Media de puntuaciones de un usuario | Sí |
+
 ## Autenticación
 
 Todas las rutas protegidas requieren un token JWT en la cabecera:
@@ -106,6 +119,13 @@ REQUESTED → ACCEPTED → IN_PROGRESS → COMPLETED
                 ↓              ↓
             CANCELLED      CANCELLED
 ```
+
+## Reglas de negocio de las calificaciones
+
+- Solo se pueden calificar viajes en estado `COMPLETED`
+- Cada viaje solo puede tener una calificación
+- Si califica el pasajero, se califica al conductor y viceversa
+- La puntuación es del 1 al 5
 
 ## Variables de configuración
 
@@ -126,5 +146,6 @@ spring:
 - [x] **Fase 1** — Setup del proyecto
 - [x] **Fase 2** — Autenticación JWT
 - [x] **Fase 3** — Gestión de viajes
-- [ ] **Fase 4** — Pagos y calificaciones
-- [ ] **Fase 5** — Front-End
+- [x] **Fase 4** — Calificaciones
+- [ ] **Fase 5** — Pagos simulados
+- [ ] **Fase 6** — Frontend en React
