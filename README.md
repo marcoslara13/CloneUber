@@ -8,7 +8,6 @@ API REST de una aplicación de transporte tipo Uber construida con Spring Boot.
 - **Spring Security** + **JWT** para autenticación
 - **Spring Data JPA** + **Hibernate** para persistencia
 - **PostgreSQL** como base de datos principal
-- **Redis** para tracking en tiempo real (Fase 4)
 - **Docker Compose** para el entorno de desarrollo
 
 ## Requisitos previos
@@ -127,5 +126,5 @@ spring:
 - [x] **Fase 1** — Setup del proyecto
 - [x] **Fase 2** — Autenticación JWT
 - [x] **Fase 3** — Gestión de viajes
-- [ ] **Fase 4** — Tracking en tiempo real (WebSockets + Redis)
-- [ ] **Fase 5** — Pagos y calificaciones
+- [ ] **Fase 4** — Pagos y calificaciones
+- [ ] **Fase 5** — Front-End
