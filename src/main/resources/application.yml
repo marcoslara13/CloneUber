@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: uber-clone
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/uberdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+jwt:
+  secret: k#9P@v2mN7$bLqY4xZ#1wA8cR5nE0uT9
+  expiration: 86400000
+
+server:
+  port: 8080
