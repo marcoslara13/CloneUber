@@ -68,6 +68,13 @@ src/main/java/com/devmark/cloneuber/
 │   ├── entity/         # Rating
 │   ├── dto/            # RatingRequest, RatingResponse
 │   └── repository/     # RatingRepository
+|
+├── payment/
+│   ├── controller/     # PaymentController
+│   ├── service/        # PaymentService
+│   ├── entity/         # Payment, PaymentStatus
+│   ├── dto/            # PaymentRequest, PaymentResponse
+│   └── repository/     # PaymentRepository
 │
 └── common/
     ├── config/         # SecurityConfig
