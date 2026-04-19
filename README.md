@@ -193,4 +193,4 @@ spring:
 - [x] **Fase 3** — Gestión de viajes
 - [x] **Fase 4** — Calificaciones
 - [x] **Fase 5** — Pagos simulados
-- [x] **Fase 6** — Frontend en React
+- [ ] **Fase 6** — Frontend en React
