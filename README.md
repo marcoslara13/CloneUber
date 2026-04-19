@@ -147,5 +147,5 @@ spring:
 - [x] **Fase 2** — Autenticación JWT
 - [x] **Fase 3** — Gestión de viajes
 - [x] **Fase 4** — Calificaciones
-- [ ] **Fase 5** — Pagos simulados
+- [x] **Fase 5** — Pagos simulados
 - [ ] **Fase 6** — Frontend en React
