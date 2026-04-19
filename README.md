@@ -1,20 +1,27 @@
 # CloneUber 🚗
 
-API REST de una aplicación de transporte tipo Uber construida con Spring Boot.
+API REST de una aplicación de transporte tipo Uber construida con Spring Boot, con frontend en React.
 
 ## Tecnologías
 
+### Backend
 - **Java 25** + **Spring Boot 4**
 - **Spring Security** + **JWT** para autenticación
 - **Spring Data JPA** + **Hibernate** para persistencia
 - **PostgreSQL** como base de datos principal
 - **Docker Compose** para el entorno de desarrollo
 
+### Frontend
+- **React** + **Vite**
+- **Axios** para llamadas a la API REST
+- **React Router** para navegación
+
 ## Requisitos previos
 
 - JDK 21+
 - Docker Desktop
-- IntelliJ IDEA (recomendado)
+- Node.js 18+
+- IntelliJ IDEA (backend) + VS Code (frontend)
 
 ## Arrancar el proyecto
 
@@ -33,6 +40,15 @@ O desde terminal:
 ```
 
 La app arranca en `http://localhost:8080`
+
+**3. Arrancar el frontend:**
+```bash
+cd cloneuber-frontend
+npm install
+npm run dev
+```
+
+El frontend arranca en `http://localhost:5173`
 
 ## Estructura del proyecto
 
@@ -68,7 +84,7 @@ src/main/java/com/devmark/cloneuber/
 │   ├── entity/         # Rating
 │   ├── dto/            # RatingRequest, RatingResponse
 │   └── repository/     # RatingRepository
-|
+│
 ├── payment/
 │   ├── controller/     # PaymentController
 │   ├── service/        # PaymentService
@@ -77,7 +93,7 @@ src/main/java/com/devmark/cloneuber/
 │   └── repository/     # PaymentRepository
 │
 └── common/
-    ├── config/         # SecurityConfig
+    ├── config/         # SecurityConfig, CorsConfig, WebSocketConfig
     ├── exception/
     └── response/       # ApiResponse
 ```
@@ -109,6 +125,13 @@ src/main/java/com/devmark/cloneuber/
 | POST | `/api/ratings` | Calificar un viaje completado | Sí |
 | GET | `/api/ratings/user/{userId}/average` | Media de puntuaciones de un usuario | Sí |
 
+### Pagos
+| Método | Endpoint | Descripción | Auth |
+|--------|----------|-------------|------|
+| POST | `/api/payments` | Crear un pago para un viaje completado | Sí |
+| POST | `/api/payments/{id}/process` | Procesar el pago | Sí |
+| GET | `/api/payments/trip/{tripId}` | Consultar el pago de un viaje | Sí |
+
 ## Autenticación
 
 Todas las rutas protegidas requieren un token JWT en la cabecera:
@@ -127,12 +150,27 @@ REQUESTED → ACCEPTED → IN_PROGRESS → COMPLETED
             CANCELLED      CANCELLED
 ```
 
-## Reglas de negocio de las calificaciones
+## Estados de un pago
 
+```
+PENDING → COMPLETED
+       → FAILED (10% de probabilidad simulada)
+```
+
+## Reglas de negocio
+
+### Calificaciones
 - Solo se pueden calificar viajes en estado `COMPLETED`
 - Cada viaje solo puede tener una calificación
 - Si califica el pasajero, se califica al conductor y viceversa
 - La puntuación es del 1 al 5
+
+### Pagos
+- Solo se puede crear un pago si el viaje está `COMPLETED`
+- El importe debe coincidir con el `finalPrice` del viaje
+- Solo el pasajero del viaje puede crear y procesar su pago
+- Un viaje solo puede tener un pago
+- No se puede procesar un pago que ya está `COMPLETED` o `FAILED`
 
 ## Variables de configuración
 
@@ -155,4 +193,4 @@ spring:
 - [x] **Fase 3** — Gestión de viajes
 - [x] **Fase 4** — Calificaciones
 - [x] **Fase 5** — Pagos simulados
-- [ ] **Fase 6** — Frontend en React
+- [x] **Fase 6** — Frontend en React
