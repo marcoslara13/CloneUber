@@ -1,6 +1,6 @@
 # CloneUber 🚗
 
-API REST de una aplicación de transporte tipo Uber construida con Spring Boot, con frontend en React.
+API REST de una aplicación de transporte tipo Uber construida con Spring Boot.
 
 ## Tecnologías
 
@@ -11,17 +11,10 @@ API REST de una aplicación de transporte tipo Uber construida con Spring Boot, 
 - **PostgreSQL** como base de datos principal
 - **Docker Compose** para el entorno de desarrollo
 
-### Frontend
-- **React** + **Vite**
-- **Axios** para llamadas a la API REST
-- **React Router** para navegación
-
 ## Requisitos previos
 
 - JDK 21+
 - Docker Desktop
-- Node.js 18+
-- IntelliJ IDEA (backend) + VS Code (frontend)
 
 ## Arrancar el proyecto
 
@@ -41,14 +34,6 @@ O desde terminal:
 
 La app arranca en `http://localhost:8080`
 
-**3. Arrancar el frontend:**
-```bash
-cd cloneuber-frontend
-npm install
-npm run dev
-```
-
-El frontend arranca en `http://localhost:5173`
 
 ## Estructura del proyecto
 
@@ -193,4 +178,4 @@ spring:
 - [x] **Fase 3** — Gestión de viajes
 - [x] **Fase 4** — Calificaciones
 - [x] **Fase 5** — Pagos simulados
-- [ ] **Fase 6** — Frontend en React
+- [ ] **Fase 6** — Tests unitarios con JUnti y Mockito
